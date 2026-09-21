@@ -1,0 +1,956 @@
+/* ==========================================================================
+   SANVI CHAVAN — ENGINEERING PORTFOLIO
+   Stylesheet
+   --------------------------------------------------------------------------
+   Design language: an engineering lab notebook translated to a screen.
+   Dot-grid "graph paper" backgrounds, blueprint-blue ink, a safety-orange
+   highlighter accent, and recurring "title block" bars borrowed from the
+   signature/date/witness strip at the bottom of every notebook page.
+
+   TABLE OF CONTENTS
+   1.  Custom properties (design tokens)
+   2.  Reset / base
+   3.  Typography
+   4.  Layout helpers
+   5.  Navigation
+   6.  Hero
+   7.  Title blocks (recurring section-label motif)
+   8.  About
+   9.  Projects
+   10. Engineering process
+   11. Skills
+   12. Research
+   13. Education / activities
+   14. Contact
+   15. Footer
+   16. Responsive design
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. CUSTOM PROPERTIES — change these to re-theme the whole site
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color */
+  --paper:        #EEF1EF;   /* page background */
+  --paper-raised: #F7F9F8;   /* card background, slightly lighter than paper */
+  --ink:          #16202B;   /* primary text / near-black navy */
+  --ink-soft:     #45535A;   /* secondary text */
+  --muted:        #7C8985;   /* tertiary / caption text */
+  --line:         #C7D2CE;   /* hairlines, dot grid, table rules */
+  --line-strong:  #16202B;   /* heavier structural rules */
+  --blueprint:    #2F5D8A;   /* primary accent — links, numbers, icons */
+  --blueprint-dim:#5A7EA0;
+  --signal:       #D9622B;   /* highlighter accent — used sparingly */
+  --signal-soft:  #F3D9C9;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --max-width: 1160px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --radius: 3px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET / BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.55;
+  /* dot-grid "graph paper" texture */
+  background-image: radial-gradient(circle, rgba(22, 32, 43, 0.14) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+section { position: relative; }
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 700; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); }
+h3 { font-size: clamp(1.2rem, 2.4vw, 1.5rem); }
+h4 { font-size: 1rem; }
+
+p { margin: 0; }
+
+.lede {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.body-text {
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.accent {
+  color: var(--blueprint);
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT HELPERS
+   -------------------------------------------------------------------------- */
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section-pad {
+  padding-top: clamp(64px, 10vw, 120px);
+  padding-bottom: clamp(64px, 10vw, 120px);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+  flex-wrap: wrap;
+}
+
+.section-head h2 { max-width: 20ch; }
+
+.section-head .section-desc {
+  max-width: 42ch;
+  color: var(--ink-soft);
+}
+
+.sheet-no {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION
+   -------------------------------------------------------------------------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(238, 241, 239, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-mark {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.nav-mark .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(14px, 2vw, 28px);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 4px 2px;
+  color: var(--ink-soft);
+  transition: color 0.2s var(--ease);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible { color: var(--ink); }
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after { transform: scaleX(1); }
+
+.nav-toggle {
+  display: none;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 6px; right: 6px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
+}
+.nav-toggle span { top: 15px; }
+.nav-toggle span::before { top: -8px; }
+.nav-toggle span::after { top: 8px; }
+
+.nav-toggle[aria-expanded="true"] span { background: transparent; }
+.nav-toggle[aria-expanded="true"] span::before { transform: translateY(8px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after { transform: translateY(-8px) rotate(-45deg); }
+
+/* --------------------------------------------------------------------------
+   6. HERO
+   -------------------------------------------------------------------------- */
+.hero {
+  padding-top: clamp(56px, 10vw, 110px);
+  padding-bottom: clamp(48px, 8vw, 90px);
+  overflow: hidden;
+}
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: start;
+}
+
+.hero-log {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--blueprint);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.hero-log::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--blueprint);
+}
+
+.hero h1 {
+  color: var(--ink);
+}
+
+.hero h1 .surname {
+  display: block;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hero-role {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.hero-lede {
+  margin-top: 22px;
+}
+
+.hero-actions {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  border-radius: var(--radius);
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.btn:hover, .btn:focus-visible {
+  background: var(--blueprint);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: none;
+  color: var(--ink);
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+}
+
+.btn-ghost:hover, .btn-ghost:focus-visible {
+  background: none;
+  color: var(--blueprint);
+  border-color: var(--blueprint);
+  transform: none;
+}
+
+/* hero schematic panel */
+.hero-panel {
+  border: 1px solid var(--line-strong);
+  background: var(--paper-raised);
+  padding: 22px;
+  position: relative;
+}
+
+.hero-panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.hero-panel svg { width: 100%; height: auto; }
+
+.hero-facts {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.hero-facts dt { color: var(--muted); }
+.hero-facts dd { margin: 2px 0 0; color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   7. TITLE BLOCK — recurring motif borrowed from the notebook footer
+   -------------------------------------------------------------------------- */
+.title-block {
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.title-block .wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.title-block .cell {
+  padding: 10px var(--gutter);
+  border-left: 1px solid var(--line);
+}
+
+.title-block .cell:first-child { border-left: none; padding-left: var(--gutter); }
+
+.title-block .cell span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   8. ABOUT
+   -------------------------------------------------------------------------- */
+.about .wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: start;
+}
+
+.about-portrait {
+  border: 1px solid var(--line-strong);
+  padding: 10px;
+  background: var(--paper-raised);
+}
+
+.about-portrait figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding-top: 8px;
+}
+
+.about-copy p + p { margin-top: 16px; }
+
+.spec-list {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.spec-list .spec-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.spec-row dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+.spec-row dd { margin: 0; color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   9. PROJECTS
+   -------------------------------------------------------------------------- */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-card {
+  border: 1px solid var(--line-strong);
+  background: var(--paper-raised);
+  position: relative;
+}
+
+.project-summary {
+  display: grid;
+  grid-template-columns: 88px 1fr 260px;
+  gap: 28px;
+  padding: 28px;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+}
+
+.project-summary::-webkit-details-marker { display: none; }
+
+.project-index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--blueprint);
+}
+
+.project-index .num {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+.project-category {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--blueprint);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid var(--blueprint-dim);
+  border-radius: 999px;
+}
+
+.project-title { margin-top: 2px; font-size: clamp(1.15rem, 2vw, 1.4rem); }
+
+.project-desc {
+  margin-top: 10px;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+
+.project-tags {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.project-thumb {
+  border: 1px solid var(--line);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--paper);
+}
+
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.project-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 4px;
+  justify-self: start;
+}
+
+.project-toggle-label .plus {
+  display: inline-block;
+  transition: transform 0.25s var(--ease);
+}
+
+details[open] .project-toggle-label .plus { transform: rotate(45deg); }
+
+.project-detail {
+  border-top: 1px solid var(--line);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 32px;
+}
+
+.detail-field {
+  font-size: 0.9rem;
+}
+
+.detail-field h4 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blueprint);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.detail-field p {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   10. ENGINEERING PROCESS
+   -------------------------------------------------------------------------- */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.process-step {
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 22px 18px;
+  min-height: 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.process-step .step-no {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--signal);
+}
+
+.process-step h3 {
+  font-size: 1rem;
+  margin-top: 24px;
+}
+
+.process-step p {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   11. SKILLS
+   -------------------------------------------------------------------------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-strong);
+  border: 1px solid var(--line-strong);
+}
+
+.skill-group {
+  background: var(--paper-raised);
+  padding: 28px;
+}
+
+.skill-group .group-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blueprint);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.skill-group h3 { margin-bottom: 18px; }
+
+.skill-group ul { display: flex; flex-direction: column; gap: 10px; }
+
+.skill-group li {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  padding-left: 16px;
+  position: relative;
+}
+
+.skill-group li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 1px;
+  background: var(--signal);
+}
+
+/* --------------------------------------------------------------------------
+   12. RESEARCH
+   -------------------------------------------------------------------------- */
+.research-card {
+  border: 1px solid var(--line-strong);
+  background: var(--paper-raised);
+  padding: clamp(28px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.research-meta .mono { display: block; color: var(--blueprint); margin-bottom: 10px; }
+
+.research-meta h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
+
+.research-meta .org {
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.research-list {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.research-list li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  padding-left: 16px;
+  position: relative;
+}
+
+.research-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 1px;
+  background: var(--blueprint);
+}
+
+/* --------------------------------------------------------------------------
+   13. EDUCATION / ACTIVITIES
+   -------------------------------------------------------------------------- */
+.edu-activities .wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.edu-card {
+  border-left: 2px solid var(--blueprint);
+  padding-left: 22px;
+}
+
+.edu-card h3 { font-size: 1.2rem; }
+.edu-card .edu-loc {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.coursework {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.coursework li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  padding: 4px 9px;
+  border-radius: 2px;
+}
+
+.activities-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-row {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.activity-row:first-child { padding-top: 0; }
+
+.activity-role { font-weight: 600; }
+.activity-org {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.activity-note {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.languages {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.languages .group-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blueprint);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.lang-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.88rem;
+}
+
+.lang-row .lvl {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   14. CONTACT
+   -------------------------------------------------------------------------- */
+.contact .wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: end;
+}
+
+.contact h2 { max-width: 14ch; }
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-strong);
+}
+
+.contact-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  transition: color 0.2s var(--ease), padding-left 0.2s var(--ease);
+}
+
+.contact-links a:hover, .contact-links a:focus-visible {
+  color: var(--blueprint);
+  padding-left: 8px;
+}
+
+.contact-links a span.arrow { color: var(--signal); }
+
+/* --------------------------------------------------------------------------
+   15. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--line-strong);
+  padding: 26px 0;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   16. RESPONSIVE DESIGN
+   -------------------------------------------------------------------------- */
+@media (max-width: 980px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-panel { order: -1; }
+
+  .about .wrap { grid-template-columns: 1fr; }
+  .about-portrait { max-width: 320px; }
+
+  .process-steps { grid-template-columns: repeat(3, 1fr); }
+
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .research-card { grid-template-columns: 1fr; }
+
+  .edu-activities .wrap { grid-template-columns: 1fr; }
+
+  .contact .wrap { grid-template-columns: 1fr; }
+
+  .title-block .wrap { grid-template-columns: repeat(2, 1fr); }
+  .title-block .cell:nth-child(3) { border-left: none; padding-left: var(--gutter); }
+}
+
+@media (max-width: 760px) {
+  .nav-links {
+    position: fixed;
+    inset: 64px 0 auto 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    padding: 8px var(--gutter) 24px;
+    gap: 4px;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+
+  .nav-toggle { display: block; }
+
+  .project-summary {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .project-thumb { order: -1; aspect-ratio: 16/10; }
+
+  .process-steps { grid-template-columns: 1fr 1fr; }
+
+  .project-detail { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .title-block .wrap { grid-template-columns: 1fr; }
+  .title-block .cell { border-left: none; border-top: 1px solid var(--line); padding-left: var(--gutter); }
+  .title-block .cell:first-child { border-top: none; }
+}

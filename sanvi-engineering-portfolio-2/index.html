@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanvi Chavan — Engineering Portfolio</title>
+<meta name="description" content="Engineering portfolio of Sanvi Chavan — electronics, embedded systems, digital logic, and physical prototyping.">
+
+<!-- Google Fonts: Space Grotesk (display/body) + IBM Plex Mono (labels/data) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23EEF1EF'/><circle cx='16' cy='16' r='4' fill='%23D9622B'/><circle cx='16' cy='16' r='11' fill='none' stroke='%2316202B' stroke-width='2'/></svg>">
+</head>
+<body>
+
+<!-- ==========================================================================
+     NAVIGATION
+     ========================================================================== -->
+<header class="site-nav">
+  <div class="wrap">
+    <a href="#top" class="nav-mark"><span class="dot"></span>S. CHAVAN — LOG</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#process">Process</a>
+      <a href="#skills">Skills</a>
+      <a href="#research">Research</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ==========================================================================
+       HERO
+       ========================================================================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="hero-log">LOG ENTRY — INTRODUCTION</p>
+        <h1>Sanvi <span class="surname">Chavan</span></h1>
+        <p class="hero-role">Student engineer · Electronics &amp; embedded systems · Class of 2028</p>
+        <p class="lede hero-lede">I'm a high school student interested in engineering, electronics, embedded
+          systems, and human-computer interaction. I learn by designing, building, testing, and documenting
+          what I discover — this site is a running record of that work.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn">View projects <span aria-hidden="true">→</span></a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Decorative schematic panel, standing in for a "hero image" -->
+      <div class="hero-panel">
+        <p class="hero-panel-label"><span>FIG. 00 — SYSTEM OVERVIEW</span><span>SCALE N.T.S.</span></p>
+        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract circuit schematic">
+          <rect x="24" y="24" width="52" height="34" stroke="#16202B" stroke-width="1.2"/>
+          <text x="50" y="45" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#16202B">MCU</text>
+
+          <rect x="120" y="18" width="46" height="46" stroke="#2F5D8A" stroke-width="1.2"/>
+          <text x="143" y="45" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#2F5D8A">H-BR</text>
+
+          <rect x="220" y="24" width="70" height="34" stroke="#16202B" stroke-width="1.2"/>
+          <text x="255" y="45" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#16202B">7-SEG</text>
+
+          <circle cx="50" cy="130" r="26" stroke="#16202B" stroke-width="1.2"/>
+          <text x="50" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#16202B">SENS</text>
+
+          <rect x="120" y="104" width="56" height="52" stroke="#D9622B" stroke-width="1.2"/>
+          <text x="148" y="126" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#D9622B">PLD</text>
+          <text x="148" y="140" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#D9622B">LOGIC</text>
+
+          <rect x="216" y="110" width="76" height="40" stroke="#16202B" stroke-width="1.2"/>
+          <text x="254" y="133" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#16202B">MOTOR</text>
+
+          <!-- traces -->
+          <path d="M76 41 H120" stroke="#16202B" stroke-width="1"/>
+          <path d="M166 41 H220" stroke="#16202B" stroke-width="1"/>
+          <path d="M50 156 V180 H148 V156" stroke="#16202B" stroke-width="1" fill="none"/>
+          <path d="M176 130 H216" stroke="#16202B" stroke-width="1"/>
+          <path d="M60 58 V104" stroke="#16202B" stroke-width="1"/>
+          <path d="M148 64 V104" stroke="#16202B" stroke-width="1"/>
+          <path d="M254 58 V110" stroke="#16202B" stroke-width="1"/>
+
+          <circle cx="60" cy="58" r="2.4" fill="#16202B"/>
+          <circle cx="148" cy="64" r="2.4" fill="#16202B"/>
+          <circle cx="254" cy="58" r="2.4" fill="#16202B"/>
+          <circle cx="176" cy="130" r="2.4" fill="#16202B"/>
+
+          <text x="20" y="200" font-family="IBM Plex Mono" font-size="8" fill="#7C8985">REF: MOTOR CONTROL / DISPLAY / SENSING BLOCKS</text>
+        </svg>
+
+        <dl class="hero-facts">
+          <div><dt>Based in</dt><dd>Lincolnshire, IL</dd></div>
+          <div><dt>School</dt><dd>Adlai E. Stevenson HS</dd></div>
+          <div><dt>Grad. year</dt><dd>2028</dd></div>
+          <div><dt>Focus</dt><dd>Embedded systems, HCI</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="title-block">
+    <div class="wrap">
+      <div class="cell"><span>Title</span>Engineering Portfolio</div>
+      <div class="cell"><span>Author</span>S. Chavan</div>
+      <div class="cell"><span>Status</span>In progress — updated periodically</div>
+      <div class="cell"><span>Sheet</span>01 of 08</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ABOUT
+       ========================================================================== -->
+  <section id="about" class="about section-pad">
+    <div class="wrap">
+      <figure class="about-portrait">
+        <img src="images/about-portrait.svg" alt="Placeholder for a portrait or workbench photo of Sanvi Chavan">
+        <figcaption>FIG. 00A — replace with a portrait or workbench photo (see README)</figcaption>
+      </figure>
+
+      <div>
+        <p class="sheet-no" style="margin-bottom:10px;">SEC. 01 — ABOUT</p>
+        <h2>Building things and figuring out why they work.</h2>
+        <div class="about-copy" style="margin-top:22px;">
+          <p class="body-text">I'm drawn to the point where hardware and software meet — where a line of code
+            has to move a motor, light a display, or make a decision based on what a sensor reports. Most of
+            my projects start on a breadboard or in a lab notebook before they end up working the way I
+            intended, and usually get rebuilt once or twice along the way.</p>
+          <p class="body-text">I've worked with digital logic, embedded programming, circuit prototyping, and
+            CAD design through coursework and independent projects, and I'm currently applying that toward
+            engineering internships and research opportunities where I can keep building and asking how
+            systems are put together.</p>
+        </div>
+
+        <dl class="spec-list">
+          <div class="spec-row">
+            <dt>School</dt>
+            <dd>Adlai E. Stevenson High School, Lincolnshire, Illinois</dd>
+          </div>
+          <div class="spec-row">
+            <dt>Graduating</dt>
+            <dd>2028</dd>
+          </div>
+          <div class="spec-row">
+            <dt>Interests</dt>
+            <dd>Embedded systems, digital logic, electronics, physical prototyping, human-computer interaction</dd>
+          </div>
+          <div class="spec-row">
+            <dt>Languages</dt>
+            <dd>English (fluent), Hindi (fluent), Marathi (fluent), French (conversational)</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SELECTED PROJECTS
+       ========================================================================== -->
+  <section id="projects" class="projects section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="sheet-no" style="margin-bottom:10px;">SEC. 02 — SELECTED PROJECTS</p>
+          <h2>Selected projects</h2>
+        </div>
+        <p class="section-desc">Seven independent builds spanning digital logic, embedded programming, and
+          hands-on circuit work. Open a project for a build-log template — details to be added as each write-up
+          is finished.</p>
+      </div>
+
+      <div class="projects-list">
+
+        <!-- PROJECT 01 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 01<span class="num">01</span></div>
+              <div>
+                <span class="project-category">Digital logic · Robotics</span>
+                <h3 class="project-title">Autonomous Roomba Simulation</h3>
+                <p class="project-desc">A simulated autonomous robotic system using H-bridge driver chips and a
+                  PLD board to control driving and obstacle-handling behavior.</p>
+                <ul class="project-tags">
+                  <li>H-bridge driver circuits</li><li>Motor control</li><li>PLD implementation</li>
+                  <li>Digital logic</li><li>Autonomous system behavior</li><li>HW/SW integration</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/roomba.svg" alt="Placeholder photo for the Autonomous Roomba Simulation project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- PROJECT 02 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 02<span class="num">02</span></div>
+              <div>
+                <span class="project-category">Digital logic</span>
+                <h3 class="project-title">60–0 Digital Down-Counter</h3>
+                <p class="project-desc">A digital counter that counts from 60 down to 0, with pause, manual
+                  count, and reset functionality built from digital logic.</p>
+                <ul class="project-tags">
+                  <li>Digital logic</li><li>Counter design</li><li>Count / hold / reset logic</li>
+                  <li>Circuit implementation</li><li>Troubleshooting</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/down-counter.svg" alt="Placeholder photo for the 60-0 Digital Down-Counter project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- PROJECT 03 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 03<span class="num">03</span></div>
+              <div>
+                <span class="project-category">Digital electronics</span>
+                <h3 class="project-title">00–19 Multiplexed Counter</h3>
+                <p class="project-desc">A two-digit counter displaying values from 00 through 19 using
+                  multiplexed seven-segment displays and counter-chip logic.</p>
+                <ul class="project-tags">
+                  <li>Multiplexing</li><li>Seven-segment displays</li><li>Counter chip operation</li>
+                  <li>Digital electronics</li><li>Circuit design</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/multiplexed-counter.svg" alt="Placeholder photo for the 00-19 Multiplexed Counter project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- PROJECT 04 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 04<span class="num">04</span></div>
+              <div>
+                <span class="project-category">Embedded systems</span>
+                <h3 class="project-title">Garage Door Simulator</h3>
+                <p class="project-desc">An Arduino-based garage door simulator modeling opening and closing
+                  behavior and safety responses using sensor input and motor-control logic.</p>
+                <ul class="project-tags">
+                  <li>Arduino</li><li>Embedded programming</li><li>Sensor integration</li>
+                  <li>Motor control</li><li>System logic</li><li>Prototyping</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/garage-door.svg" alt="Placeholder photo for the Garage Door Simulator project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- PROJECT 05 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 05<span class="num">05</span></div>
+              <div>
+                <span class="project-category">Embedded systems</span>
+                <h3 class="project-title">Seven-Segment Display Message Board</h3>
+                <p class="project-desc">An Arduino project that drives a seven-segment display to show letters
+                  and numbers, mapping segments to build custom messages.</p>
+                <ul class="project-tags">
+                  <li>Arduino C/C++</li><li>Embedded programming</li><li>Seven-segment displays</li>
+                  <li>HW/SW integration</li><li>Display control</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/message-board.svg" alt="Placeholder photo for the Seven-Segment Display Message Board project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- PROJECT 06 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 06<span class="num">06</span></div>
+              <div>
+                <span class="project-category">Circuit prototyping</span>
+                <h3 class="project-title">Furnace Simulator Circuit</h3>
+                <p class="project-desc">A breadboarded furnace-control simulation using LEDs to represent
+                  different system signals and states.</p>
+                <ul class="project-tags">
+                  <li>Circuit prototyping</li><li>System-state logic</li><li>Breadboarding</li>
+                  <li>Digital electronics</li><li>Troubleshooting</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/furnace.svg" alt="Placeholder photo for the Furnace Simulator Circuit project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- PROJECT 07 -->
+        <article class="project-card">
+          <details>
+            <summary class="project-summary">
+              <div class="project-index">FIG. 07<span class="num">07</span></div>
+              <div>
+                <span class="project-category">Hardware fabrication</span>
+                <h3 class="project-title">Soldered Breadboard Companion</h3>
+                <p class="project-desc">A hand-soldered prototyping tool designed as a companion for
+                  breadboard-based electronics work.</p>
+                <ul class="project-tags">
+                  <li>Precision soldering</li><li>Circuit assembly</li><li>Hardware prototyping</li>
+                  <li>Engineering craftsmanship</li>
+                </ul>
+                <p class="project-toggle-label"><span class="plus">+</span> Build log</p>
+              </div>
+              <div class="project-thumb">
+                <img src="images/breadboard-companion.svg" alt="Placeholder photo for the Soldered Breadboard Companion project — replace with a real project photo">
+              </div>
+            </summary>
+            <div class="project-detail">
+              <div class="detail-field"><h4>Motivation</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Problem</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Design</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Build</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Testing</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Iterations</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>Results</h4><p>Add notes here.</p></div>
+              <div class="detail-field"><h4>What I learned</h4><p>Add notes here.</p></div>
+            </div>
+          </details>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ENGINEERING PROCESS
+       ========================================================================== -->
+  <section id="process" class="process section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="sheet-no" style="margin-bottom:10px;">SEC. 03 — METHOD</p>
+          <h2>How I work through a build</h2>
+        </div>
+        <p class="section-desc">The same six-step loop shows up in every notebook, whether the project is a
+          logic circuit or a physical prototype.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <span class="step-no">01</span>
+          <div><h3>Define the problem</h3><p>Pin down what the project needs to do and what constraints it has to work within.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-no">02</span>
+          <div><h3>Research</h3><p>Look at existing approaches and components before committing to a design.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-no">03</span>
+          <div><h3>Design</h3><p>Sketch and spec the system — logic, circuit, or CAD — before building it.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-no">04</span>
+          <div><h3>Build</h3><p>Breadboard, solder, or assemble the prototype from the design.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-no">05</span>
+          <div><h3>Test</h3><p>Run it, measure what actually happens, and compare against the goal.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-no">06</span>
+          <div><h3>Iterate</h3><p>Fix what failed, adjust the design, and rebuild until it holds up.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SKILLS
+       ========================================================================== -->
+  <section id="skills" class="skills section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="sheet-no" style="margin-bottom:10px;">SEC. 04 — TECHNICAL SKILLS</p>
+          <h2>Technical skills</h2>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-group">
+          <span class="group-label">01 — HARDWARE / ELECTRONICS</span>
+          <h3>Hardware &amp; electronics</h3>
+          <ul>
+            <li>Arduino</li>
+            <li>Circuit design</li>
+            <li>Prototyping</li>
+            <li>Breadboarding</li>
+            <li>Soldering</li>
+            <li>Sensor integration</li>
+            <li>Motor control</li>
+            <li>H-bridge driver circuits</li>
+            <li>PWM speed control</li>
+            <li>Digital logic</li>
+            <li>PLD board implementation</li>
+            <li>Multisim</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <span class="group-label">02 — CAD / DESIGN</span>
+          <h3>CAD &amp; design</h3>
+          <ul>
+            <li>Autodesk Inventor</li>
+            <li>Tinkercad</li>
+            <li>3D modeling</li>
+            <li>Engineering design process</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <span class="group-label">03 — PROGRAMMING</span>
+          <h3>Programming</h3>
+          <ul>
+            <li>Python</li>
+            <li>Java</li>
+            <li>Object-oriented programming</li>
+            <li>Arduino C/C++</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       RESEARCH
+       ========================================================================== -->
+  <section id="research" class="research section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="sheet-no" style="margin-bottom:10px;">SEC. 05 — RESEARCH</p>
+          <h2>Research experience</h2>
+        </div>
+      </div>
+
+      <div class="research-card">
+        <div class="research-meta">
+          <span class="mono">2024–2025</span>
+          <h3>Peer Reviewer — Cardiovascular Medical Imaging Research Project</h3>
+          <p class="org">Under the guidance of a Medical Imaging Specialist, Northwestern School of Medicine</p>
+        </div>
+        <div>
+          <p class="body-text">I served as a peer reviewer for a high-school-led research project on
+            cardiovascular medical imaging. My role involved evaluating the project rather than conducting the
+            underlying research, and it gave me direct exposure to how biomedical imaging research is
+            structured and communicated.</p>
+          <ul class="research-list">
+            <li>Evaluated research methodology</li>
+            <li>Reviewed technical content for accuracy and clarity</li>
+            <li>Assessed the quality of scientific communication</li>
+            <li>Gained exposure to biomedical imaging research and medical engineering applications</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDUCATION / ACTIVITIES
+       ========================================================================== -->
+  <section id="education" class="edu-activities section-pad">
+    <div class="wrap">
+
+      <div>
+        <p class="sheet-no" style="margin-bottom:10px;">SEC. 06 — EDUCATION</p>
+        <div class="edu-card">
+          <h3>Adlai E. Stevenson High School</h3>
+          <p class="edu-loc">Lincolnshire, Illinois · Expected graduation 2028</p>
+          <ul class="coursework">
+            <li>AP Physics</li>
+            <li>PLTW Intro to Engineering Design</li>
+            <li>PLTW Digital Electronics</li>
+            <li>Computer Programming 1 — Python</li>
+            <li>Computer Programming 2 — Java</li>
+            <li>AP Computer Science A</li>
+            <li>AP Precalculus BC</li>
+            <li>AP Chemistry</li>
+            <li>PLTW Engineering Design &amp; Development</li>
+            <li>College French</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <p class="sheet-no" style="margin-bottom:10px;">SEC. 07 — LEADERSHIP &amp; ACTIVITIES</p>
+        <div class="activities-list">
+          <div class="activity-row">
+            <div>
+              <p class="activity-role">State Director of Outreach</p>
+              <p class="activity-org">AYA Illinois Chapter</p>
+            </div>
+          </div>
+          <div class="activity-row">
+            <div>
+              <p class="activity-role">Model UN Conference Coordinator</p>
+              <p class="activity-org">Stevenson Model UN Conference</p>
+              <p class="activity-note">Authored background guides and handled conference-wide communications.</p>
+            </div>
+          </div>
+          <div class="activity-row">
+            <div>
+              <p class="activity-role">Member</p>
+              <p class="activity-org">FBLA</p>
+            </div>
+          </div>
+          <div class="activity-row">
+            <div>
+              <p class="activity-role">Member</p>
+              <p class="activity-org">National Honor Society</p>
+            </div>
+          </div>
+          <div class="activity-row">
+            <div>
+              <p class="activity-role">Member</p>
+              <p class="activity-org">French Honor Society</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="languages">
+          <span class="group-label">LANGUAGES</span>
+          <div class="lang-row"><span>English</span><span class="lvl">Fluent</span></div>
+          <div class="lang-row"><span>Hindi</span><span class="lvl">Fluent</span></div>
+          <div class="lang-row"><span>Marathi</span><span class="lvl">Fluent</span></div>
+          <div class="lang-row"><span>French</span><span class="lvl">Conversational</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT
+       ========================================================================== -->
+  <section id="contact" class="contact section-pad">
+    <div class="wrap">
+      <div>
+        <p class="sheet-no" style="margin-bottom:10px;">SEC. 08 — CONTACT</p>
+        <h2>Let's talk about a build.</h2>
+        <p class="lede" style="margin-top:18px;">Open to internships, research opportunities, and conversations
+          about engineering projects.</p>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:sanvi.chavan808@gmail.com">Email <span class="arrow">→</span></a>
+        <!-- Add more links as you create profiles, e.g.:
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+        -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> Sanvi Chavan</span>
+    <span>Built with HTML, CSS &amp; vanilla JS — hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
